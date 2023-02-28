@@ -3,18 +3,9 @@
 #include <string>
 using namespace std;
 
+class VProduct;
 
 /// 虚拟类
-
-class VProduct
-{
-public:
-    virtual ~VProduct() {}
-
-    virtual void use() = 0;
-
-    // 添加产品功能
-};
 
 class VFactory // 添加产品工厂，注册工厂成员、
 {
@@ -31,6 +22,16 @@ public:
         registerProduct(pro);
         return pro;
     }
+};
+
+class VProduct
+{
+public:
+    virtual ~VProduct() {}
+
+    virtual void use() = 0;
+
+    // 添加产品功能
 };
 
 
