@@ -1,10 +1,4 @@
-output
-bin
-*.o
-*.i
-*.s
+build
 Intercept Filter.cpp
-2208
-2209
-2210
-2303
+*.exe
+bin
