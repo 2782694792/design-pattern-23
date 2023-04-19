@@ -1,4 +1,6 @@
 build
-Intercept Filter.cpp
 *.exe
-bin
+.vscode
+.gitignore
+*.bat
+.clang-format
