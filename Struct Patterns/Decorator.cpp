@@ -37,7 +37,7 @@ public:
 
 class DecoratorPhone : public Phone {
 private:
-    Phone* m_phone; // 要装饰的手机
+    Phone* m_phone; // 对手机的装饰过程封装类
 public:
     DecoratorPhone(Phone* phone) : m_phone(phone) {}
     virtual void showDecorate() {
