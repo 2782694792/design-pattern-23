@@ -29,3 +29,91 @@
 
 1. GUI 中每一个按钮都是一条命令；
 2. 模拟 CMD。
+
+## 示例
+
+- 撤销与重做：
+```cpp
+
+class Command {
+public:
+    virtual void execute() = 0;
+    virtual void undo() = 0;
+    virtual void redo() = 0;
+};
+
+class AddCommand : public Command {
+private:
+    int& value;
+    int amount;
+public:
+    AddCommand(int& value, int amount) : value(value), amount(amount) {}
+    void execute() {
+        value += amount;
+    }
+    void undo() {
+        value -= amount;
+    }
+    void redo() {
+        execute();
+    }
+};
+
+class Invoker {
+private:
+    Command* command;
+public:
+    void setCommand(Command* command) {
+        this->command = command;
+    }
+    void executeCommand() {
+        command->execute();
+    }
+    void undoCommand() {
+        command->undo();
+    }
+    void redoCommand() {
+        command->redo();
+    }
+};
+
+class SubtractCommand : public Command {
+private:
+    int& value;
+    int amount;
+public:
+    SubtractCommand(int& value, int amount) : value(value), amount(amount) {}
+    void execute() {
+        value -= amount;
+    }
+    void undo() {
+        value += amount;
+    }
+    void redo() {
+        execute();
+    }
+};
+
+int main() {
+    int value = 0;
+
+    // 增加 1
+    AddCommand addCommand(value, 1);
+    invoker.setCommand(&addCommand);
+    invoker.executeCommand(); // value = 1
+
+    // 减少 2
+    SubtractCommand subtractCommand(value, 2);
+    invoker.setCommand(&subtractCommand);
+    invoker.executeCommand(); // value = -1
+
+    // 撤销
+    invoker.undoCommand(); // value = 1
+
+    // 重做
+    invoker.redoCommand(); // value = -1
+
+    return 0;
+}
+
+```
