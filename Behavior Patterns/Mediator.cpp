@@ -76,6 +76,7 @@ public:
             m_mediator->convey(id, msg);
         }
     }
+    
     virtual void setMediator(IMediator* mediator) override {
         m_mediator = mediator;
     }
