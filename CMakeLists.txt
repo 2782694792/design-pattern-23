@@ -9,4 +9,4 @@ aux_source_directory("Behavior Patterns" MAIN)
 SET(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Wall -fexec-charaset=UTF8")
 
 set(EXECUTABLE_OUTPUT_PATH  ${PROJECT_SOURCE_DIR})
-add_executable(${PROJECT_NAME}_main "Behavior Patterns/Memento.cpp")
+add_executable(${PROJECT_NAME}_main "Behavior Patterns/State.cpp")
